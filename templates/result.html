@@ -1,0 +1,45 @@
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if (gte IE 9)| IEMobile |!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title>李叶运动</title>
+
+        <link rel="stylesheet" href="http://nonooodle.com/public/ghost.min.css"/>
+    </head>
+    <body>
+        <div class="gh-app">
+            <div class="gh-viewport">
+                <main class="gh-main" role="main">
+                    <div class="gh-flow">
+                        <div class="gh-flow-content-wrap">
+                            <section class="gh-flow-content">
+                                <header>
+                                    <h1>运行结果</h1>
+                                </header>
+                                <form style="text-align:center" class="gh-signin" method="get" action="/" novalidate="novalidate">
+                                        {% csrf_token %}
+                                    <span>{{ Message }}</span>
+                                    <button class="gh-btn gh-btn-blue gh-btn-block" type="submit"><span>返回</span></button>
+
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#{{ Message }}#}
+{#<a href="/">返回</a>#}
+{#</body>#}
+{#</html>#}
