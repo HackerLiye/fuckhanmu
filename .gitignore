@@ -1,3 +1,6 @@
 db.sqlite3
 autorun/migrations
 *.pyc
+*.pyo
+.idea
+celerybeat.pid
