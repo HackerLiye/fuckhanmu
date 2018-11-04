@@ -43,3 +43,8 @@ celery beat -A fuckhanmu_web
 celery flower -A fuckhanmu_web
 ```
 如果都没有报错的话应该就可以了。
+
+## 还没有实现的功能
+- 根据性别自动设置跑步距离
+- 自定义定时任务的时间
+- 停止正在运行的任务
