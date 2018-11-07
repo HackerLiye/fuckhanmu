@@ -44,6 +44,23 @@ celery flower -A fuckhanmu_web
 ```
 如果都没有报错的话应该就可以了。
 
+## 说明
+1. 定时任务需要在django后台添加，需要先
+```commandline
+python manage.py createsuperuser
+```
+之后输入用户名密码，再进入/admin目录下登陆就会看到一个叫做周期任务的表，
+需要在里面手动添加任务，其中的crontab是定义在crontab表里的，这里只是调用了其中的
+id，所以views.py里面的添加定时任务函数
+```python
+PeriodicTask.objects.create(args=json.dumps([str(IMEI)]),
+                            enabled=1,
+                            name=request.session.get('ID'),
+                            crontab_id=1,#需要修改
+                            task='autorun.tasks.run',
+                            )
+```
+里面的crontab_id得改一下，要不然会报错。
 ## 还没有实现的功能
 - 根据性别自动设置跑步距离
 - 自定义定时任务的时间

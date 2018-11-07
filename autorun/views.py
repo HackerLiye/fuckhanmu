@@ -83,7 +83,7 @@ def schedule(request):
         PeriodicTask.objects.create(args=json.dumps([str(IMEI)]),
                                     enabled=1,
                                     name=request.session.get('ID'),
-                                    crontab_id=3,
+                                    crontab_id=1,#需要修改
                                     task='autorun.tasks.run',
                                     )
         message = '添加成功'
