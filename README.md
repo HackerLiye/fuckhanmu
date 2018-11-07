@@ -17,7 +17,7 @@
 
 ```
 pip install django celery flower
-pip install django-celery django-celery-backend
+pip install django-celery django-celery-results
 pip install requests
 apt-get install rabbitmq-server
 ```
