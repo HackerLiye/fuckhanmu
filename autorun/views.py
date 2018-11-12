@@ -21,8 +21,10 @@ def index(request):
         info = get_info(request.session.get('IMEI'))
         name = info['NickName']
         id = info['UserID']
+        sex = info['Sex']
         request.session['Name'] = name
         request.session['ID'] = id
+        request.session['Sex'] = sex
         message = ""
         message_run = "未进行跑步任务"
         message_schedule = "未添加定时任务"
@@ -72,15 +74,24 @@ def start_run(request):
             message = "现在正在队列中哦，不要着急"
             flag = False
     if flag:
-        run.delay(request.session.get('IMEI'))
+        if request.session.get('Sex') == '男':
+            run.delay(request.session.get('IMEI'),2000)
+        elif request.session.get('Sex') == '女':
+            run.delay(request.session.get('IMEI'), 1600)
         message = "跑步成功！"
     return render(request, 'result.html', {"Message": message})
 
 
 def schedule(request):
     IMEI = request.session.get('IMEI')
+    sex = request.session.get('Sex')
+    distance = 2000
+    if sex == '男':
+        distance = 2000
+    elif sex == '女':
+        distance = 1600
     try:
-        PeriodicTask.objects.create(args=json.dumps([str(IMEI)]),
+        PeriodicTask.objects.create(args=json.dumps([str(IMEI), distance]),
                                     enabled=1,
                                     name=request.session.get('ID'),
                                     crontab_id=1,#需要修改

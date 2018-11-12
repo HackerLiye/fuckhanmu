@@ -24,7 +24,7 @@ def encrypt(s):
 
 
 @shared_task
-def run(IMEI):
+def run(IMEI, distance):
 
     if len(IMEI) != 32:
         exit("IMEI Format Error!")
@@ -37,7 +37,7 @@ def run(IMEI):
 
     # Generate Runnig Data Randomly
     RunTime = str(random.randint(720, 1000))  # seconds
-    RunDist = str(2000 + random.randint(0, 3))  # meters
+    RunDist = str(int(distance) + random.randint(0, 3))  # meters
     RunStep = str(random.randint(1300, 1600))  # steps
 
     # Login
